@@ -18,10 +18,7 @@ public static class ApplicationBuilderExtensions
         using var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
         // Apply migrations if needed
-        if (context.Database.HasPendingModelChanges())
-        {
-            context.Database.Migrate();
-        }
+        context.Database.Migrate();
 
         return app;
     }
